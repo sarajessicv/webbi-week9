@@ -24,7 +24,7 @@ const MyContainer = () => {
         items.forEach(item => {
             if(id === item.id){
                 item.clicked = true;
-                setItems(items);
+                setItems([...items]);
             }
         });
         
