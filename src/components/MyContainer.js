@@ -23,7 +23,7 @@ const MyContainer = () => {
     const updateItem = (id) => {
         items.forEach(item => {
             if(id === item.id){
-                item.clicked = true;
+                item.clicked = !item.clicked;
                 setItems([...items]);
             }
         });
