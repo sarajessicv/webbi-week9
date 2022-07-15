@@ -7,16 +7,27 @@ const MyContainer = () => {
     const [text, setText] = useState('')
 
     const [items, setItems] = useState([
-        { id: "1", text: "This is an item" },
-        { id: "2", text: "Also this" },
+        { id: "1", text: "This is an item", clicked: false },
+        { id: "2", text: "Also this", clicked: false },
     ]);
 
     const addList = () => {
         const id = items.length + 1;      
-        const newItem = {id, text}; 
+        const newItem = {id, text, clicked: false}; 
+
         setItems([...items, newItem]);
         setText('')
 
+    }
+
+    const updateItem = (id) => {
+        items.forEach(item => {
+            if(id === item.id){
+                item.clicked = true;
+                setItems(items);
+            }
+        });
+        
     }
 
   return (
@@ -25,8 +36,10 @@ const MyContainer = () => {
       <textarea id="textArea" placeholder='Add new list item' onChange={(e) => setText(e.target.value)} value={text}></textarea>
       <button id="addButton" onClick={addList}>Add new item</button>
 
-      <MyList header="Really epic list component"
+      <MyList 
+      header="Really epic list component"
       items={items} 
+      updateItem={updateItem}
       />
     </div>
   )

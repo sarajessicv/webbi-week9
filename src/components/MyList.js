@@ -1,8 +1,8 @@
 
-function MyList({header, items}) {
+function MyList({header, items, updateItem}) {
 
     const listItems = items.map((element) => (
-        <li key={element.id}>{element.text}</li>
+        <li key={element.id} onClick={() => updateItem(element.id)} style={{textDecoration: element.clicked ? "line-through":""}}>{element.text}</li>
     ))
     
   return (
